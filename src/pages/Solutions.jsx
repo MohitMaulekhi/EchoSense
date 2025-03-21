@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import biasDetectionImg from '/assets/images/bias.webp';
 import abuseDetectionImg from '/assets/images/Abuse.jpg';
+import { motion } from 'framer-motion';
 const Solutions = () => {
   const navigate = useNavigate();
   
