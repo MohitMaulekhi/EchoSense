@@ -1,40 +1,40 @@
 import { useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
 import React from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-
+import biasDetectionImg from '/assets/images/bias.webp';
+import abuseDetectionImg from '/assets/images/Abuse.jpg';
 const Solutions = () => {
   const navigate = useNavigate();
   
   const solutions = [
     {
-      title: "Hospital Dashboard",
-      image: "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=800&q=80",
-      description: "Comprehensive hospital management system that provides real-time insights and control over all hospital operations, enabling efficient decision-making and resource management.",
+      title: "Bias Detection Dashboard",
+      image: biasDetectionImg,  // Remove the curly braces
+      description: "Advanced platform for detecting and analyzing various forms of bias in text content, helping maintain ethical AI systems.",
       benefits: [
-        "Real-time bed management & occupancy tracking",
-        "Staff scheduling & workload optimization",
-        "Department performance analytics",
-        "Resource utilization monitoring",
-        "Emergency response coordination",
-        "Financial metrics & reporting"
+        "Real-time bias detection",
+        "Multi-language support",
+        "Bias pattern analysis",
+        "Automated reporting",
+        "Custom bias rule configuration",
+        "Historical trend analysis"
       ],
-      path: "/hospital-dashboard"
+      path: "/bias-dashboard"
     },
     {
-      title: "Patient Dashboard",
-      image: "https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?auto=format&fit=crop&w=800&q=80",
-      description: "Patient-centric platform that empowers individuals to manage their healthcare journey, access medical records, and interact with healthcare providers seamlessly.",
+      title: "Abuse Detection Dashboard", // Updated title to match the functionality
+      image: abuseDetectionImg,  // Remove the curly braces
+      description: "Advanced platform for detecting and analyzing abusive content, ensuring safe online spaces through automated content moderation.",
       benefits: [
-        "Personal health records access",
-        "Appointment scheduling & reminders",
-        "Medication tracking & alerts",
-        "Telemedicine integration",
-        "Lab results & reports viewing",
-        "Secure provider messaging"
+        "Real-time abuse detection",
+        "Multi-language support",
+        "Pattern recognition",
+        "Automated content filtering",
+        "Custom moderation rules",
+        "Incident reporting"
       ],
-      path: "/patient-dashboard"
+      path: "/abuse-dashboard"
     }
   ];
 
@@ -62,14 +62,17 @@ const Solutions = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center"
+            className="text-center cursor-default group"
           >
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            <h1 className="text-4xl md:text-5xl font-bold text-cyan-400 mb-4 gradient-text-hover">
               Our Solutions
             </h1>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Explore our powerful dashboard solutions designed to revolutionize healthcare management for both healthcare providers and patients.
-            </p>
+            <div 
+              className="w-24 h-1 bg-cyan-400 mx-auto transform 
+                transition-all duration-500 ease-in-out
+                group-hover:w-48 group-hover:bg-gradient-to-r group-hover:from-cyan-400 group-hover:to-blue-500
+                group-hover:shadow-[0_0_15px_#06b6d4] group-hover:h-1.5"
+            ></div>
           </motion.div>
         </div>
       </section>
@@ -86,11 +89,11 @@ const Solutions = () => {
                 transition={{ duration: 0.5, delay: index * 0.2 }}
                 className="bg-secondary-dark/30 p-8 rounded-2xl border border-primary/20 backdrop-blur-xl hover:border-primary/40 transition-colors overflow-hidden"
               >
-                <div className="relative mb-6 rounded-xl overflow-hidden">
+                <div className="relative mb-6 rounded-xl overflow-hidden h-48">
                   <motion.img
                     src={solution.image}
                     alt={`${solution.title} Preview`}
-                    className="w-full h-48 object-cover rounded-xl"
+                    className="w-full h-full object-fill rounded-xl"
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.3 }}
                   />
@@ -105,7 +108,7 @@ const Solutions = () => {
                 <ul className="space-y-3">
                   {solution.benefits.map((benefit, idx) => (
                     <li key={idx} className="flex items-center text-gray-300">
-                      <svg className="w-5 h-5 text-primary mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <svg className="w-5 h-5 text-primary-Default mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                       {benefit}
@@ -115,7 +118,7 @@ const Solutions = () => {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="mt-6 w-full bg-primary hover:bg-primary-dark text-white px-6 py-3 rounded-full transition-colors"
+                  className="mt-6 w-full bg-cyan-400 hover:bg-primary-dark text-white px-6 py-3 rounded-full transition-colors"
                   onClick={(e) => handleLearnMore(e, solution.path)}
                 >
                   Learn More
@@ -126,7 +129,7 @@ const Solutions = () => {
         </div>
       </section>
       
-      <Footer />
+
     </div>
   );
 };

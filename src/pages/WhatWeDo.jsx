@@ -1,34 +1,33 @@
-import { motion } from 'framer-motion';
 import React from 'react';
 const WhatWeDo = () => {
   const services = [
     {
-      title: "Queue Management",
-      description: "Our AI-powered queue management system revolutionizes how hospitals handle patient flow. By analyzing real-time data and patient priorities, we optimize waiting times and improve patient satisfaction.",
+      title: "Content Analysis",
+      description: "Our AI-powered content analysis system revolutionizes how platforms handle potentially harmful content. By analyzing real-time data and content patterns, we optimize detection and refinement processes.",
       features: [
-        "Smart priority allocation",
-        "Real-time wait time predictions",
-        "Automated patient notifications",
-        "Dynamic queue optimization"
+        "Smart content prioritization",
+        "Real-time bias detection",
+        "Automated content flagging",
+        "Dynamic analysis optimization"
       ]
     },
     {
-      title: "Resource Allocation",
-      description: "Efficiently manage hospital resources with our intelligent allocation system. From bed management to staff scheduling, we ensure optimal utilization of all hospital assets.",
+      title: "Language Processing",
+      description: "Efficiently manage content moderation with our intelligent detection system. From hate speech to subtle biases, we ensure comprehensive content analysis.",
       features: [
-        "Bed tracking and allocation",
-        "Staff scheduling optimization",
-        "Equipment utilization tracking",
-        "Resource conflict prevention"
+        "Bias pattern recognition",
+        "Content classification",
+        "Sentiment analysis",
+        "Context-aware detection"
       ]
     },
     {
       title: "Analytics & Reporting",
-      description: "Make data-driven decisions with our comprehensive analytics platform. Monitor key performance indicators and identify areas for improvement in real-time.",
+      description: "Make data-driven decisions with our comprehensive analytics platform. Monitor key performance indicators and identify patterns in real-time.",
       features: [
-        "Performance dashboards",
-        "Resource utilization reports",
-        "Patient flow analytics",
+        "Bias detection metrics",
+        "Content moderation insights",
+        "Pattern recognition analytics",
         "Trend analysis and forecasting"
       ]
     }
@@ -105,4 +104,4 @@ const WhatWeDo = () => {
   );
 };
 
-export default WhatWeDo; 
+export default WhatWeDo;

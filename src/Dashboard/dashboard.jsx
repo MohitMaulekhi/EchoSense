@@ -1,12 +1,12 @@
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 import { useState, useRef, useEffect } from 'react';
 import { FiMenu, FiX, FiMessageSquare, FiAlertTriangle, FiShield, FiClock, 
          FiUser, FiChevronDown, FiSettings, FiLogOut } from 'react-icons/fi';
-import biasDetectionImg from '../assets/bias.webp';
-import abuseDetectionImg from '../assets/Abuse.jpg';
+import biasDetectionImg from '/assets/images/bias.webp';
+import abuseDetectionImg from '/assets/images/Abuse.jpg';
 
 const Dashboard = () => {
-  const [isNavOpen, setIsNavOpen] = useState(true);
+  const [isNavOpen, setIsNavOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const profileRef = useRef(null);
   
@@ -67,21 +67,21 @@ const Dashboard = () => {
   return (
     <div className="flex h-screen bg-gray-900 relative">
       {/* Horizontal Navbar */}
-      <div className={`fixed top-0 right-0 h-16 bg-gray-800/40 backdrop-blur-xl z-50 
-        border-b border-gray-700/20 px-4 flex justify-between items-center transition-all duration-300
-        ${isNavOpen ? 'left-[280px]' : 'left-0'}`}>
+      <div className={`fixed top-0 right-0 h-14 sm:h-16 bg-gray-800/40 backdrop-blur-xl z-50 
+        border-b border-gray-700/20 px-2 sm:px-4 flex justify-between items-center transition-all duration-300
+        ${isNavOpen ? 'left-0 lg:left-[280px]' : 'left-0'}`}>
         
         {/* Left section with menu button and logo */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2 sm:gap-4">
           <button
             onClick={() => setIsNavOpen(!isNavOpen)}
-            className="p-2 rounded-xl backdrop-blur-xl bg-gray-600 border border-black 
+            className="p-1.5 sm:p-2 rounded-xl backdrop-blur-xl bg-gray-600 border border-black 
               hover:bg-gray-800 transition-all duration-300"
           >
             {isNavOpen ? (
-              <FiX size={20} className="text-white" />
+              <FiX size={18} className="text-white" />
             ) : (
-              <FiMenu size={20} className="text-white" />
+              <FiMenu size={18} className="text-white" />
             )}
           </button>
           
@@ -89,7 +89,7 @@ const Dashboard = () => {
             href="/"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="text-xl font-bold text-cyan-400 hover:text-cyan-600 transition-colors"
+            className="text-lg sm:text-xl font-bold text-cyan-400 hover:text-cyan-600 transition-colors"
           >
             EchoSense
           </motion.a>
@@ -142,8 +142,8 @@ const Dashboard = () => {
       </div>
 
       {/* Adjust main content padding to account for navbar */}
-      <div className="pt-16 w-full">
-        <div className="flex h-screen bg-gray-900 relative">
+      <div className="pt-16 w-full overflow-x-hidden min-h-screen">
+        <div className="flex flex-col lg:flex-row bg-gray-900 relative min-h-screen">
           {/* Spider Cursor Background */}
         {/* //   <div className="absolute inset-0 z-0">
           //     <SpiderCursor />
@@ -157,7 +157,7 @@ const Dashboard = () => {
                 animate={{ width: 280, opacity: 1 }}
                 exit={{ width: 0, opacity: 0 }}
                 transition={{ duration: 0.3, ease: 'easeInOut' }}
-                className="relative backdrop-blur-xl bg-gray-800/40 shadow-xl h-full z-10 border-r border-gray-800/50"
+                className="fixed lg:relative top-16 bottom-0 left-0 backdrop-blur-xl bg-gray-800/40 shadow-xl z-50 border-r border-gray-800/50 overflow-y-auto"
               >
  
 
@@ -194,52 +194,52 @@ const Dashboard = () => {
           </AnimatePresence>
 
           {/* Main Content with Glassmorphism */}
-          <div className="flex-1 p-8 pl-16 z-10 pt-8">
+          <div className="flex-1 p-4 sm:p-6 lg:p-8 lg:pl-16 z-10">
             <motion.h1 
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="text-3xl font-bold text-white mb-8"
+              className="text-2xl sm:text-3xl font-bold text-white mb-6 sm:mb-8"
             >
               AI Analysis Dashboard
             </motion.h1>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
               {/* Bias Detection Card */}
               <motion.div
                 whileHover={{ scale: 1.02 }}
-                className="p-6 backdrop-blur-xl bg-white/10 rounded-xl border border-gray-700/20 
-                  hover:shadow-xl transition-all duration-300 min-h-[300px] flex flex-col"
+                className="p-4 sm:p-6 backdrop-blur-xl bg-white/10 rounded-xl border border-gray-700/20 
+                  hover:shadow-xl transition-all duration-300 flex flex-col min-h-[350px]"
               >
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="p-4 bg-cyan-50 rounded-xl">
-                    <FiAlertTriangle className="text-2xl text-cyan-600" />
+                <div className="flex items-center gap-4 mb-4 sm:mb-6">
+                  <div className="p-3 sm:p-4 bg-cyan-50 rounded-xl">
+                    <FiAlertTriangle className="text-xl sm:text-2xl text-cyan-600" />
                   </div>
-                  <h2 className="text-xl font-bold text-white">Bias Detection</h2>
+                  <h2 className="text-lg sm:text-xl font-bold text-white">Bias Detection</h2>
                 </div>
                 
                 {/* Content Container */}
-                <div className="flex gap-6 flex-grow">
+                <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 flex-grow">
                   {/* Image Container */}
-                  <div className="relative w-52 h-52 rounded-xl overflow-hidden group flex-shrink-0">
+                  <div className="relative w-full sm:w-52 h-40 sm:h-52 rounded-xl overflow-hidden group flex-shrink-0">
                     <img 
                       src={biasDetectionImg}
                       alt="Bias Detection Illustration"
                       className="w-[90%] h-[90%] object-contain mx-auto my-auto transition-transform duration-300 
-                        group-hover:scale-105 "
+                        group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 "></div>
                   </div>
 
                   {/* Text Content */}
                   <div className="flex flex-col justify-between flex-grow">
-                    <p className="text-white leading-relaxed">
+                    <p className="text-sm sm:text-base text-white leading-relaxed">
                       Analyze text for potential biases using our advanced AI algorithms. Get detailed insights and recommendations.
                     </p>
                     
                     <motion.button
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      className="w-full mt-4 py-3 px-4 bg-cyan-500 text-white rounded-xl font-semibold hover:bg-cyan-600 transition-colors shadow-md hover:shadow-lg"
+                      className="w-full mt-4 py-2 sm:py-3 px-4 bg-cyan-500 text-white rounded-xl font-semibold 
+                        hover:bg-cyan-600 transition-colors shadow-md hover:shadow-lg text-sm sm:text-base"
                     >
                       Start Analysis
                     </motion.button>
@@ -250,39 +250,39 @@ const Dashboard = () => {
               {/* Abusive Language Detection Card */}
               <motion.div
                 whileHover={{ scale: 1.02 }}
-                className="p-6 backdrop-blur-xl bg-white/10 rounded-xl border border-gray-700/20 
-                  hover:shadow-xl transition-all duration-300 min-h-[300px] flex flex-col"
+                className="p-4 sm:p-6 backdrop-blur-xl bg-white/10 rounded-xl border border-gray-700/20 
+                  hover:shadow-xl transition-all duration-300 flex flex-col min-h-[350px]"
               >
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="p-4 bg-cyan-50 rounded-xl">
-                    <FiShield className="text-2xl text-cyan-600" />
+                <div className="flex items-center gap-4 mb-4 sm:mb-6">
+                  <div className="p-3 sm:p-4 bg-cyan-50 rounded-xl">
+                    <FiShield className="text-xl sm:text-2xl text-cyan-600" />
                   </div>
-                  <h2 className="text-xl font-bold text-white">Abusive Language Detection</h2>
+                  <h2 className="text-lg sm:text-xl font-bold text-white">Abusive Language Detection</h2>
                 </div>
 
                 {/* Content Container */}
-                <div className="flex gap-6 flex-grow">
+                <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 flex-grow">
                   {/* Image Container */}
-                  <div className="relative w-52 h-52 rounded-xl overflow-hidden group flex-shrink-0">
+                  <div className="relative w-full sm:w-52 h-40 sm:h-52 rounded-xl overflow-hidden group flex-shrink-0">
                     <img 
                       src={abuseDetectionImg}
                       alt="Language Detection Illustration"
                       className="w-[90%] h-[90%] object-contain mx-auto my-auto transition-transform duration-300 
-                        group-hover:scale-105 "
+                        group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 "></div>
                   </div>
 
                   {/* Text Content */}
                   <div className="flex flex-col justify-between flex-grow">
-                    <p className="text-white leading-relaxed">
+                    <p className="text-sm sm:text-base text-white leading-relaxed">
                       Detect and filter out abusive language using our AI-powered system. Real-time analysis and reporting.
                     </p>
                     
                     <motion.button
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      className="w-full mt-4 py-3 px-4 bg-cyan-500 text-white rounded-xl font-semibold hover:bg-cyan-600 transition-colors shadow-md hover:shadow-lg"
+                      className="w-full mt-4 py-2 sm:py-3 px-4 bg-cyan-500 text-white rounded-xl font-semibold 
+                        hover:bg-cyan-600 transition-colors shadow-md hover:shadow-lg text-sm sm:text-base"
                     >
                       Start Detection
                     </motion.button>

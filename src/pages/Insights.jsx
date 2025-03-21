@@ -4,35 +4,35 @@ import React from 'react';
 const Insights = () => {
   const insights = [
     {
-      title: "The Future of Hospital Operations",
-      description: "Explore how AI and automation are transforming hospital operations and improving patient care delivery.",
+      title: "The Future of AI Content Moderation",
+      description: "Explore how advanced AI systems are revolutionizing content moderation and creating safer online spaces.",
       topics: [
-        "AI in healthcare",
-        "Digital transformation",
-        "Patient experience",
-        "Operational efficiency"
+        "AI Ethics",
+        "Content Moderation",
+        "Machine Learning",
+        "User Safety"
       ],
       readTime: "5 min read"
     },
     {
-      title: "Optimizing Resource Allocation",
-      description: "Learn about best practices in hospital resource management and how technology can help optimize utilization.",
+      title: "Understanding Bias in AI Systems",
+      description: "Deep dive into identifying and mitigating different types of bias in artificial intelligence systems.",
       topics: [
-        "Resource management",
-        "Staff scheduling",
-        "Bed allocation",
-        "Cost optimization"
+        "Bias Detection",
+        "AI Fairness",
+        "Model Training",
+        "Ethical AI"
       ],
       readTime: "4 min read"
     },
     {
-      title: "Improving Patient Flow",
-      description: "Discover strategies for enhancing patient flow and reducing wait times in healthcare facilities.",
+      title: "Advanced Abuse Detection Techniques",
+      description: "Discover the latest strategies in detecting and preventing online abuse through AI-powered solutions.",
       topics: [
-        "Queue management",
-        "Patient experience",
-        "Operational efficiency",
-        "Quality of care"
+        "Abuse Prevention",
+        "NLP",
+        "Pattern Recognition",
+        "Real-time Detection"
       ],
       readTime: "6 min read"
     }
@@ -47,13 +47,20 @@ const Insights = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center"
           >
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Healthcare Insights
-            </h1>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Stay informed with the latest trends, best practices, and innovations in hospital management and healthcare operations.
+            <div className="text-center cursor-default group">
+              <h1 className="text-4xl md:text-5xl font-bold text-cyan-400 mb-4 gradient-text-hover">
+                AI Ethics Insights
+              </h1>
+              <div 
+                className="w-24 h-1 bg-cyan-400 mx-auto transform 
+                  transition-all duration-500 ease-in-out
+                  group-hover:w-48 group-hover:bg-gradient-to-r group-hover:from-cyan-400 group-hover:to-blue-500
+                  group-hover:shadow-[0_0_15px_#06b6d4] group-hover:h-1.5"
+              ></div>
+            </div>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto text-center mt-6">
+              Empowering digital spaces through ethical AI. Join us in creating a more inclusive online world where bias is detected, abuse is prevented, and every voice is heard with respect.
             </p>
           </motion.div>
         </div>
@@ -86,7 +93,7 @@ const Insights = () => {
                   {insight.topics.map((topic, idx) => (
                     <span
                       key={idx}
-                      className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm"
+                      className="px-3 py-1 bg-primary-Default/10 text-primary-Default rounded-full text-sm"
                     >
                       {topic}
                     </span>
@@ -95,7 +102,7 @@ const Insights = () => {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="mt-6 w-full bg-transparent hover:bg-primary/10 text-primary px-6 py-3 rounded-full transition-colors border border-primary"
+                  className="mt-6 w-full bg-transparent hover:bg-primary-Default/10 text-primary-Default px-6 py-3 rounded-full transition-colors border border-primary"
                 >
                   Read Article
                 </motion.button>
@@ -108,4 +115,4 @@ const Insights = () => {
   );
 };
 
-export default Insights; 
+export default Insights;

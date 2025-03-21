@@ -13,7 +13,7 @@ const Navbar = () => {
   };
 
   const handleLogin = () => {
-    navigate('/login');
+    navigate('/signin');
     setIsMenuOpen(false);
   };
 
@@ -107,13 +107,13 @@ const Navbar = () => {
                             className={`px-4 py-2 ${activeTab === 'hospital' ? 'text-cyan-400 border-b-2 border-cyan-400' : 'text-gray-300'}`}
                             onClick={() => handleTabClick('hospital')}
                           >
-                            Hospital Dashboard
+                            Bias Detection 
                           </button>
                           <button
                             className={`px-4 py-2 ${activeTab === 'patient' ? 'text-cyan-400 border-b-2 border-cyan-400' : 'text-gray-300'}`}
                             onClick={() => handleTabClick('patient')}
                           >
-                            Patient Dashboard
+                            Content Moderation 
                           </button>
                         </div>
                         

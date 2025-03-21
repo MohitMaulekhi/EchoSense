@@ -1,51 +1,33 @@
 @import "tailwindcss";
 
+
 @layer base {
-    body {
-      @apply bg-secondary-dark text-white;
-    }
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@theme{
+    --color-primary-Default:#22D3EE;  /* Cyan-400 */
+    --color-primary-dark:#06B6D4;     /* Cyan-500 */
+
+    --color-secondary-Default:#1F2937;
+    --color-secondary-dark:#111827;
+
+    --gridTemplateColumns-auto:repeat(auto-fill, minmax(200px, 1fr));
+    --backdropBlur-xs:2px;
+}
+
+@layer utilities {
+  .gradient-text-hover {
+    transition: all 0.3s ease-in-out;
   }
   
-  @layer components {
-    .btn-cyan-400 {
-      @apply bg-cyan-400 hover:bg-cyan-400-dark text-white px-6 py-2 rounded-full transition-colors;
-    }
-    
-    .btn-secondary {
-      @apply border border-cyan-400 text-cyan-400 hover:bg-cyan-400/10 px-6 py-2 rounded-full transition-colors;
-    }
+  .gradient-text-hover:hover {
+    background: linear-gradient(to right, #22d3ee, #3b82f6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
-  
-  ::-webkit-scrollbar {
-    width: 10px;
-    background-color: #140522;
-  }
-  
-  ::-webkit-scrollbar-track {
-    background-color: #140522;
-    border-radius: 10px;
-  }
-  
-  ::-webkit-scrollbar-thumb {
-    background: linear-gradient(to bottom, #22d3ee, #3b82f6);
-    border-radius: 10px;
-    border: 2px solid #140522;
-  }
-  
-  ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(to bottom, #22d3ee, #3b82f6);
-  }
-  
-  * {
-    scrollbar-width: thin;
-    scrollbar-color: #22d3ee #140522;
-  }
-  
-  /* Hide scrollbar but maintain functionality */
-  .hide-scrollbar {
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE and Edge */
-  }
-  .hide-scrollbar::-webkit-scrollbar {
-    display: none; /* Chrome, Safari and Opera */
-  }
+}
+

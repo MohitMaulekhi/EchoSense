@@ -29,9 +29,9 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           {/* Company Info */}
           <div>
-            <h3 className="text-3xl font-bold text-primary mb-6">QMedix</h3>
+            <h3 className="text-3xl font-bold text-cyan-400 mb-6">EchoSense</h3>
             <p className="text-gray-400 text-lg">
-              Transforming healthcare delivery through intelligent automation and data-driven solutions.
+              Transforming digital spaces through intelligent bias detection and content moderation solutions.
             </p>
           </div>
 
@@ -40,27 +40,27 @@ const Footer = () => {
             <h4 className="text-xl font-semibold mb-6">Quick Links</h4>
             <ul className="space-y-4">
               <li>
-                <Link to="/" className="text-gray-400 hover:text-primary transition-colors text-lg">
+                <Link to="/" className="text-gray-400 hover:text-cyan-400 transition-colors text-lg">
                   Home
                 </Link>
               </li>
               <li>
-                <Link to="/what-we-do" className="text-gray-400 hover:text-primary transition-colors text-lg">
+                <Link to="/what-we-do" className="text-gray-400 hover:text-cyan-400 transition-colors text-lg">
                   What We Do
                 </Link>
               </li>
               <li>
-                <Link to="/solutions" className="text-gray-400 hover:text-primary transition-colors text-lg">
+                <Link to="/solutions" className="text-gray-400 hover:text-cyan-400 transition-colors text-lg">
                   Solutions
                 </Link>
               </li>
               <li>
-                <Link to="/insights" className="text-gray-400 hover:text-primary transition-colors text-lg">
+                <Link to="/insights" className="text-gray-400 hover:text-cyan-400 transition-colors text-lg">
                   Insights
                 </Link>
               </li>
               <li>
-                <Link to="/about" className="text-gray-400 hover:text-primary transition-colors text-lg">
+                <Link to="/about" className="text-gray-400 hover:text-cyan-400 transition-colors text-lg">
                   About Us
                 </Link>
               </li>
@@ -70,11 +70,11 @@ const Footer = () => {
           {/* Contact */}
           <div>
             <h4 className="text-xl font-semibold mb-6">Contact</h4>
-            <ul className="space-y-4 text-gray-400 text-lg">
-              <li>123 Healthcare Ave</li>
-              <li>Medical District</li>
-              <li>contact@qmedix.com</li>
-              <li>+91-5551234567</li>
+            <ul className="space-y-4 text-gray-400  text-lg ">
+              <li className='hover:text-cyan-400 cursor-pointer'>123 Healthcare Ave</li>
+              <li className='hover:text-cyan-400 cursor-pointer'>Medical District</li>
+              <li className='hover:text-cyan-400 cursor-pointer'>contact@echosense.com</li>
+              <li className='hover:text-cyan-400 cursor-pointer'>+91-5551234567</li>
             </ul>
           </div>
 
@@ -88,11 +88,11 @@ const Footer = () => {
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="flex-1 bg-secondary text-white px-6 py-3 rounded-full focus:outline-none focus:ring-2 focus:ring-primary text-lg"
+                className="flex-1 bg-secondary-Default text-white px-6 py-3 rounded-full focus:outline-none focus:ring-2 focus:ring-cyan-400 text-lg"
               />
               <button
                 type="submit"
-                className="bg-primary hover:bg-primary-dark text-white px-8 py-3 rounded-full transition-colors text-lg"
+                className="bg-cyan-400 hover:bg-cyan-300 text-white px-8 py-3 rounded-full cursor-pointer transition-colors text-lg"
               >
                 Subscribe
               </button>
@@ -107,15 +107,15 @@ const Footer = () => {
               className="flex flex-col items-start gap-2 group cursor-pointer pl-4"
               whileHover="hover"
             >
-              <span className="text-[30px] text-gray-400 group-hover:text-primary transition-colors">
+              <span className="text-[30px] text-gray-400 group-hover:text-cyan-400 transition-colors">
                 Next Page
               </span>
               <div className="flex items-center gap-4">
-                <span className="text-[70px] text-gray-400 group-hover:text-primary transition-colors font-semibold break-words">
+                <span className="text-[70px] text-gray-400 group-hover:text-cyan-400 transition-colors font-semibold break-words">
                   {nextPageName}
                 </span>
                 <motion.svg
-                  className="w-12 h-12 text-primary"
+                  className="w-12 h-12 text-cyan-400"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -139,13 +139,13 @@ const Footer = () => {
         <div className="mt-16">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-400 text-lg">
-              © {new Date().getFullYear()} QMedix. All rights reserved.
+              © {new Date().getFullYear()} EchoSense. All rights reserved.
             </p>
             <div className="flex space-x-8 mt-4 md:mt-0">
-              <a href="#" className="text-gray-400 hover:text-primary transition-colors text-lg">
+              <a href="#" className="text-gray-400 hover:text-cyan-400 transition-colors text-lg">
                 Privacy Policy
               </a>
-              <a href="#" className="text-gray-400 hover:text-primary transition-colors text-lg">
+              <a href="#" className="text-gray-400 hover:text-cyan-400 transition-colors text-lg">
                 Terms of Service
               </a>
             </div>
@@ -156,4 +156,4 @@ const Footer = () => {
   );
 };
 
-export default Footer; 
+export default Footer;
