@@ -1,0 +1,300 @@
+import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useRef, useEffect } from 'react';
+import { FiMenu, FiX, FiMessageSquare, FiAlertTriangle, FiShield, FiClock, 
+         FiUser, FiChevronDown, FiSettings, FiLogOut } from 'react-icons/fi';
+import biasDetectionImg from '../assets/bias.webp';
+import abuseDetectionImg from '../assets/Abuse.jpg';
+
+const Dashboard = () => {
+  const [isNavOpen, setIsNavOpen] = useState(true);
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const profileRef = useRef(null);
+  
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (profileRef.current && !profileRef.current.contains(event.target)) {
+        setIsProfileOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const [pastChats] = useState([
+    { 
+      id: 1, 
+      title: "Bias Analysis - Social Media Posts", 
+      timestamp: "10 min ago" 
+    },
+    { 
+      id: 2, 
+      title: "Content Moderation - Blog Comments", 
+      timestamp: "2h ago" 
+    },
+    { 
+      id: 3, 
+      title: "Hate Speech Detection Report", 
+      timestamp: "5h ago" 
+    },
+    { 
+      id: 4, 
+      title: "Gender Bias Analysis - Job Listings", 
+      timestamp: "Yesterday" 
+    },
+    { 
+      id: 5, 
+      title: "Forum Comments Analysis", 
+      timestamp: "2 days ago" 
+    },
+    { 
+      id: 6, 
+      title: "AI Bias Detection - News Articles", 
+      timestamp: "3 days ago" 
+    },
+    { 
+      id: 7, 
+      title: "Harassment Detection Report", 
+      timestamp: "1 week ago" 
+    },
+    { 
+      id: 8, 
+      title: "Language Analysis - Support Tickets", 
+      timestamp: "2 weeks ago" 
+    }
+  ]);
+
+  return (
+    <div className="flex h-screen bg-gray-900 relative">
+      {/* Horizontal Navbar */}
+      <div className={`fixed top-0 right-0 h-16 bg-gray-800/40 backdrop-blur-xl z-50 
+        border-b border-gray-700/20 px-4 flex justify-between items-center transition-all duration-300
+        ${isNavOpen ? 'left-[280px]' : 'left-0'}`}>
+        
+        {/* Left section with menu button and logo */}
+        <div className="flex items-center gap-4">
+          <button
+            onClick={() => setIsNavOpen(!isNavOpen)}
+            className="p-2 rounded-xl backdrop-blur-xl bg-gray-600 border border-black 
+              hover:bg-gray-800 transition-all duration-300"
+          >
+            {isNavOpen ? (
+              <FiX size={20} className="text-white" />
+            ) : (
+              <FiMenu size={20} className="text-white" />
+            )}
+          </button>
+          
+          <motion.a
+            href="/"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="text-xl font-bold text-cyan-400 hover:text-cyan-600 transition-colors"
+          >
+            EchoSense
+          </motion.a>
+        </div>
+
+        {/* Profile section remains unchanged */}
+        <div className="relative" ref={profileRef}>
+          <button
+            onClick={() => setIsProfileOpen(!isProfileOpen)}
+            className="flex items-center gap-2 px-3 py-2 rounded-xl 
+              hover:bg-gray-700/30 transition-colors"
+          >
+            <div className="w-8 h-8 rounded-full bg-cyan-500 flex items-center justify-center">
+              <FiUser className="text-white" />
+            </div>
+            <FiChevronDown className={`text-white transition-transform duration-200 
+              ${isProfileOpen ? 'rotate-180' : ''}`} />
+          </button>
+
+          {/* Dropdown Menu */}
+          <AnimatePresence>
+            {isProfileOpen && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                className="absolute right-0 mt-2 w-48 py-2 bg-gray-800/80 backdrop-blur-xl 
+                  rounded-xl border border-gray-700/20 shadow-xl"
+              >
+                <button className="flex items-center gap-3 w-full px-4 py-2 text-white 
+                  hover:bg-gray-700/30 transition-colors">
+                  <FiUser className="text-cyan-400" />
+                  <span>Profile</span>
+                </button>
+                <button className="flex items-center gap-3 w-full px-4 py-2 text-white 
+                  hover:bg-gray-700/30 transition-colors">
+                  <FiSettings className="text-cyan-400" />
+                  <span>Settings</span>
+                </button>
+                <div className="my-1 border-b border-gray-700/20"></div>
+                <button className="flex items-center gap-3 w-full px-4 py-2 text-red-400 
+                  hover:bg-gray-700/30 transition-colors">
+                  <FiLogOut />
+                  <span>Log Out</span>
+                </button>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+      </div>
+
+      {/* Adjust main content padding to account for navbar */}
+      <div className="pt-16 w-full">
+        <div className="flex h-screen bg-gray-900 relative">
+          {/* Spider Cursor Background */}
+        {/* //   <div className="absolute inset-0 z-0">
+          //     <SpiderCursor />
+          //   </div> */}
+
+          {/* Sidebar with Glassmorphism */}
+          <AnimatePresence>
+            {isNavOpen && (
+              <motion.div
+                initial={{ width: 0, opacity: 0 }}
+                animate={{ width: 280, opacity: 1 }}
+                exit={{ width: 0, opacity: 0 }}
+                transition={{ duration: 0.3, ease: 'easeInOut' }}
+                className="relative backdrop-blur-xl bg-gray-800/40 shadow-xl h-full z-10 border-r border-gray-800/50"
+              >
+ 
+
+                {/* Past Chats List */}
+                <div className="p-4 border-b border-gray-700/20">
+                  <div className="flex items-center mb-6">
+                    <div className="flex items-center gap-2">
+                      <FiClock className="text-cyan-600 text-lg" />
+                      <h3 className="font-semibold text-white">Recent Sessions</h3>
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-2">
+                    {pastChats.map((chat) => (
+                      <motion.div
+                        key={chat.id}
+                        whileHover={{ scale: 1.02, backgroundColor: 'rgba(55, 65, 81, 0.3)' }}
+                        className="p-3 rounded-xl border border-gray-700/20 hover:shadow-lg 
+                          transition-all duration-100 bg-gray-900"
+                      >
+                        <div className="flex items-center gap-3">
+                          <FiMessageSquare className="text-cyan-600 flex-shrink-0" />
+                          <div>
+                            <h3 className="font-medium text-white">{chat.title}</h3>
+                            <p className="text-sm text-gray-400">{chat.timestamp}</p>
+                          </div>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {/* Main Content with Glassmorphism */}
+          <div className="flex-1 p-8 pl-16 z-10 pt-8">
+            <motion.h1 
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-3xl font-bold text-white mb-8"
+            >
+              AI Analysis Dashboard
+            </motion.h1>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {/* Bias Detection Card */}
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                className="p-6 backdrop-blur-xl bg-white/10 rounded-xl border border-gray-700/20 
+                  hover:shadow-xl transition-all duration-300 min-h-[300px] flex flex-col"
+              >
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="p-4 bg-cyan-50 rounded-xl">
+                    <FiAlertTriangle className="text-2xl text-cyan-600" />
+                  </div>
+                  <h2 className="text-xl font-bold text-white">Bias Detection</h2>
+                </div>
+                
+                {/* Content Container */}
+                <div className="flex gap-6 flex-grow">
+                  {/* Image Container */}
+                  <div className="relative w-52 h-52 rounded-xl overflow-hidden group flex-shrink-0">
+                    <img 
+                      src={biasDetectionImg}
+                      alt="Bias Detection Illustration"
+                      className="w-[90%] h-[90%] object-contain mx-auto my-auto transition-transform duration-300 
+                        group-hover:scale-105 "
+                    />
+                    <div className="absolute inset-0 "></div>
+                  </div>
+
+                  {/* Text Content */}
+                  <div className="flex flex-col justify-between flex-grow">
+                    <p className="text-white leading-relaxed">
+                      Analyze text for potential biases using our advanced AI algorithms. Get detailed insights and recommendations.
+                    </p>
+                    
+                    <motion.button
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      className="w-full mt-4 py-3 px-4 bg-cyan-500 text-white rounded-xl font-semibold hover:bg-cyan-600 transition-colors shadow-md hover:shadow-lg"
+                    >
+                      Start Analysis
+                    </motion.button>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Abusive Language Detection Card */}
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                className="p-6 backdrop-blur-xl bg-white/10 rounded-xl border border-gray-700/20 
+                  hover:shadow-xl transition-all duration-300 min-h-[300px] flex flex-col"
+              >
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="p-4 bg-cyan-50 rounded-xl">
+                    <FiShield className="text-2xl text-cyan-600" />
+                  </div>
+                  <h2 className="text-xl font-bold text-white">Abusive Language Detection</h2>
+                </div>
+
+                {/* Content Container */}
+                <div className="flex gap-6 flex-grow">
+                  {/* Image Container */}
+                  <div className="relative w-52 h-52 rounded-xl overflow-hidden group flex-shrink-0">
+                    <img 
+                      src={abuseDetectionImg}
+                      alt="Language Detection Illustration"
+                      className="w-[90%] h-[90%] object-contain mx-auto my-auto transition-transform duration-300 
+                        group-hover:scale-105 "
+                    />
+                    <div className="absolute inset-0 "></div>
+                  </div>
+
+                  {/* Text Content */}
+                  <div className="flex flex-col justify-between flex-grow">
+                    <p className="text-white leading-relaxed">
+                      Detect and filter out abusive language using our AI-powered system. Real-time analysis and reporting.
+                    </p>
+                    
+                    <motion.button
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      className="w-full mt-4 py-3 px-4 bg-cyan-500 text-white rounded-xl font-semibold hover:bg-cyan-600 transition-colors shadow-md hover:shadow-lg"
+                    >
+                      Start Detection
+                    </motion.button>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Dashboard;
